@@ -30,6 +30,7 @@ def testapi():
     if msg != None:
       # 如果有 msg 參數，觸發 LINE Message API 的 push_message 方法
       line_bot_api.push_message("Ua4c9e00a3662dddc35ee1d36665a8e27", TextSendMessage(text='Hello World!!!'))
+      print(msg)
       return msg
     else:
       return 'OK'
