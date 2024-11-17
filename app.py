@@ -22,6 +22,23 @@ def callback():
         abort(400)
     return 'OK'
 
+
+@app.route("/api/test" , methods=['POST'])
+def testapi():
+  try:
+    msg = request.data   # 取得網址的 msg 參數
+    if msg != None:
+      # 如果有 msg 參數，觸發 LINE Message API 的 push_message 方法
+      line_bot_api.push_message('你的 User ID', TextSendMessage(text=msg))
+      return msg
+    else:
+      return 'OK'
+  except:
+    print('error')
+
+
+
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     line_bot_api.push_message("Ua4c9e00a3662dddc35ee1d36665a8e27", TextSendMessage(text='Hello World!!!'))
