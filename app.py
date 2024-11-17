@@ -28,8 +28,9 @@ def testapi():
   try:
     msg = request.data   # 取得網址的 msg 參數
     if msg != None:
+      msg_data = msg.decode("utf-8")
       # 如果有 msg 參數，觸發 LINE Message API 的 push_message 方法
-      line_bot_api.push_message("Ua4c9e00a3662dddc35ee1d36665a8e27", TextSendMessage(text="add new txt file"))
+      line_bot_api.push_message("Ua4c9e00a3662dddc35ee1d36665a8e27", TextSendMessage(text=msg_data))
       print(msg)
       return msg
     else:
